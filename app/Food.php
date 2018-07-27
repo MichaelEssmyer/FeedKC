@@ -3,16 +3,23 @@
 namespace App;
 
 use App\Cart;
+use App\User;
 use Illuminate\Database\Eloquent\Model;
 
 class Food extends Model
 {
  
-    protected $fillable = ['title', 'body', 'cart_id'];
+    protected $fillable = ['type', 'title', 'amount', 'cart_id', 'donator_id'];
 
 
     public function cart() 
     {
-    	 $this->belongsTo('App\Cart');
+    	 return $this->belongsTo('App\Cart');
     }
+
+    public function donator()
+    {
+        return User::find($this->donator_id);
+    }
+
 }

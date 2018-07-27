@@ -17,8 +17,8 @@ class FoodController extends Controller
     public function index()
     {
         $foods = Food::all();
-        return view('food.index', compact('foods'));
 
+        return view('food.index', compact('foods'));
     }
 
     /**
@@ -43,7 +43,7 @@ class FoodController extends Controller
 
 
         $food->fill($request->input());
-        $food->cart_id = $user->cart()->first()->id;
+        $food->donator_id = auth()->id();
         $food->save();
 
         return redirect('/food');

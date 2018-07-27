@@ -10,11 +10,14 @@
                 <div class="card">
                     <div class="card-header">
                         {{ $food->title }}
-                        <button class='btn btn-primary float-right' @click="requestFood">request food </button>
+                        {{ $food->donator()->email }}
+                        <button class='btn btn-primary float-right' @click="requestFood">Add To Cart</button>
                     </div>
 
                     <div class="card-body text-center">
-                        {{ $food->body }}
+                        {{ $food->amount }}
+                        {{ $food->type }}
+                        <input v-model="amount" name='amount' type= 'number' class='form-control' placeholder='amount of food' min="0" max = '{{ $food->amount }}'/>
                     </div>
                 </div>
             </food>

@@ -16,8 +16,10 @@ class CreateFoodsTable extends Migration
         Schema::create('foods', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title');
-            $table->string('body');
-            $table->integer('cart_id');
+            $table->integer('amount');
+            $table->enum('type', ['vegetable', 'protein', 'other']);
+            $table->integer('cart_id')->nullable();
+            $table->integer('donator_id');
             $table->timestamps();
         });
     }
