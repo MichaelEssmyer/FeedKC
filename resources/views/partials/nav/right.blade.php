@@ -30,7 +30,7 @@
                                         </a>
                                         <div class='cart' v-if='cart'>
                                             <i class='fa fa-times-circle float-right' @click='cart = !cart'></i>
-                                            <div class='item' v-for='(item, index) in items'>
+                                            <div class='food' v-for='(item, index) in items'>
                                                 @{{ item.title }}
                                                 @{{ item.body }}
                                             </div>

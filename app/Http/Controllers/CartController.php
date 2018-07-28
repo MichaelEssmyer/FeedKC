@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Cart;
+use App\Food;
 use Illuminate\Http\Request;
 
 class CartController extends Controller
@@ -15,8 +16,8 @@ class CartController extends Controller
     public function index()
     {
 
-        $cart = Cart::where('user_id', auth()->id());
-        return $cart->first()->items()->get();
+        $cart = Cart::where('user_id', auth()->user()->id)->first();
+        return Food::where('cart_id', $cart->id)->get();
 
     }
 
@@ -70,9 +71,20 @@ class CartController extends Controller
      * @param  \App\Cart  $cart
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Cart $cart)
+    public function update()
     {
-        //
+
+        $food = Food::find(request('food_id'));
+        $user = auth()->user();
+        $cart = $user->cart()->first();
+
+        $food->cart_id = $cart->id;
+
+        $food->save();
+
+        $cartFoods = Food::where('cart_id',  $cart->id)->get();
+
+        return $cartFoods;
     }
 
     /**

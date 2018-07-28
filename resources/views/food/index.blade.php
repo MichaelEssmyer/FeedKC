@@ -6,7 +6,7 @@
         <div class="col-md-8">
             @foreach($foods as $food)
 
-            <food :food='{{ $food }}' :id='{{ auth()->id() }}' inline-template>
+            <food :food_id='{{ $food->id }}' inline-template>
                 <div class="card">
                     <div class="card-header">
                         {{ $food->title }}
@@ -17,7 +17,7 @@
                     <div class="card-body text-center">
                         {{ $food->amount }}
                         {{ $food->type }}
-                        <input v-model="amount" name='amount' type= 'number' class='form-control' placeholder='amount of food' min="0" max = '{{ $food->amount }}'/>
+                        <input v-model="amount" name='amount' type= 'number' class='form-control' placeholder='amount of food' :min="this.amount" max='{{ $food->amount }}'/>
                     </div>
                 </div>
             </food>
