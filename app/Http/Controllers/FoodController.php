@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\User;
 use App\Food;
-use App\Cart;
 use Illuminate\Http\Request;
 
 class FoodController extends Controller
@@ -37,7 +36,7 @@ class FoodController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, Food $food, Cart $cart)
+    public function store(Request $request, Food $food)
     {
         $user = User::find(auth()->id());
 
@@ -78,18 +77,9 @@ class FoodController extends Controller
      * @param  \App\Food  $food
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Food $food, Cart $cart)
+    public function update()
     {
-        
-        $food = Food::find($request->food['id']);
-        $user = User::find($request->user_id);
-        $cart = $user->cart()->first();
-
-        $food->cart_id = $cart->id; 
-        
-        $food->save();
-
-        return $food;
+        //
     }
 
     /**

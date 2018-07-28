@@ -1,21 +1,19 @@
 <script>
     export default {
-        props: ['food', 'id'],
+        props: ['food_id'],
 
         data() {
             return {
-                amount: ''
+                amount: '0'
             }
         },
         methods: 
         {
             requestFood()
             {
-                alert('alert')
                 axios.post(this.endpoint, {
-                    'food': this.food,
-                    'amount': this.amount,
-                    'user_id': this.id
+                    'food_id': this.food_id,
+                    'amount': this.amount
                 })
             }
         },

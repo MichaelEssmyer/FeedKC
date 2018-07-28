@@ -15,10 +15,10 @@
         methods: 
         {
             fetchItems()
-            {                
+            {
                 axios.get(this.endpoint)
                     .then(({data}) => {
-                        this.items =  data
+                        this.items = data
                     })
             }
         },

@@ -22,4 +22,4 @@ Route::resource('food', 'FoodController');
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::post('/transfer', 'FoodController@update');
+Route::post('/transfer', 'CartController@update');
