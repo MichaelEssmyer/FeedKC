@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 class Food extends Model
 {
  
-    protected $fillable = ['type', 'title', 'amount', 'cart_id', 'donator_id'];
+    protected $fillable = ['type', 'title', 'amount', 'cart_id', 'donator_id', 'experation'];
 
 
     public function cart() 

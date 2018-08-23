@@ -17,8 +17,16 @@ Route::get('/', function () {
 
 Auth::routes();
 
+Route::get('user/{id}', 'UserController@show');
+
+Route::get('food', 'FoodController@index');
 Route::get('cart', 'CartController@index');
-Route::resource('food', 'FoodController');
+Route::post('food', 'FoodController@store');
+
+Route::get('/food/create', 'FoodController@create');
+
+Route::get('/all-food', 'FoodController@getFood');
+Route::delete('/food', 'FoodController@destroy');
 
 Route::get('/home', 'HomeController@index')->name('home');
 

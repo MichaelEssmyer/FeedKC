@@ -17,9 +17,10 @@ class CreateFoodsTable extends Migration
             $table->increments('id');
             $table->string('title');
             $table->integer('amount');
-            $table->enum('type', ['vegetable', 'protein', 'other']);
+            $table->enum('type', ['Produce', 'Proteins', 'Breads','Nonperishables','Other']);
             $table->integer('cart_id')->nullable();
             $table->integer('donator_id');
+            $table->date('experation');
             $table->timestamps();
         });
     }

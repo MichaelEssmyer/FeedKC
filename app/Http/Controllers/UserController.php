@@ -2,11 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\User;
-use App\Food;
 use Illuminate\Http\Request;
 
-class FoodController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,12 +13,10 @@ class FoodController extends Controller
      */
     public function index()
     {
-        return view('food.index');
     }
 
     public function getFood()
     {
-        return Food::all();
     }
 
     /**
@@ -30,7 +26,6 @@ class FoodController extends Controller
      */
     public function create()
     {
-        return view('food.create');
     }
 
     /**
@@ -39,21 +34,8 @@ class FoodController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, Food $food)
+    public function store()
     {
-        $validatedData = $request->validate([
-            'title' => 'required',
-            'amount' => 'required',
-            'type' => 'required',
-            'experation' =>'required'
-             ]);
-
-        $food->fill($validatedData);
-        $food->donator_id = auth()->id();
-
-        $food->save();
-
-        return redirect('/food');
     }
 
     /**
@@ -62,9 +44,9 @@ class FoodController extends Controller
      * @param  \App\Food  $food
      * @return \Illuminate\Http\Response
      */
-    public function show(Food $food)
+    public function show($id)
     {
-        return view('food.show', $food);
+        return $id;
     }
 
     /**
@@ -73,9 +55,8 @@ class FoodController extends Controller
      * @param  \App\Food  $food
      * @return \Illuminate\Http\Response
      */
-    public function edit(Food $food)
+    public function edit()
     {
-        return view('food.edit', $food);
     }
 
     /**
@@ -96,11 +77,9 @@ class FoodController extends Controller
      * @param  \App\Food  $food
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Request $request)
+    public function destroy()
     {
 
-        $food = Food::find(request('food_id'));
-        $food->delete();
-    
+
     }
 }

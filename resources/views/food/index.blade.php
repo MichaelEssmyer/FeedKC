@@ -4,25 +4,35 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            @foreach($foods as $food)
+            <foods inline-template>
+                <div>
+                    <food v-for='(food, index) in foods' :key="index" :food='food' inline-template>
+                        <div class="card">
+                            <div class="card-header">
+                                @{{ food.amount }}
+                                @{{ food.title }}
+                                <br>
+                                @{{ donator }}
+                                <br>
+                                Food Type: @{{ food.type }}
 
-            <food :food_id='{{ $food->id }}' inline-template>
-                <div class="card">
-                    <div class="card-header">
-                        {{ $food->title }}
-                        {{ $food->donator()->email }}
-                        <button class='btn btn-primary float-right' @click="requestFood">Add To Cart</button>
-                    </div>
-
-                    <div class="card-body text-center">
-                        {{ $food->amount }}
-                        {{ $food->type }}
-                        <input v-model="amount" name='amount' type= 'number' class='form-control' placeholder='amount of food' :min="this.amount" max='{{ $food->amount }}'/>
-                    </div>
+                            </div>
+                            <div class="card-body text-center">
+                                <div class="row">
+                                    <div class="col-sm-8">
+                                        <input name='amount' type= 'number' class='form-control' placeholder='amount of food' :min="this.amount" :max='food.amount' required/>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <button style='width:100%' class='btn btn-primary'>
+                                            Request Item
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </food>
                 </div>
-            </food>
-            <hr>    
-            @endforeach
+            </foods>
         </div>
     </div>
 </div>

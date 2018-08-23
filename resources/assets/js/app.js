@@ -17,7 +17,8 @@ window.Vue = require('vue');
 
 Vue.component('food', require('./components/Food.vue'));
 Vue.component('cart', require('./components/Cart.vue'));
+Vue.component('foods', require('./components/Foods.vue'));
 
 const app = new Vue({
-    el: '#app'
+    el: '#app',
 });

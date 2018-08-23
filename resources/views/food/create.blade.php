@@ -11,17 +11,21 @@
                     <form action="/food" method="POST">
                         <div class='form-group'>
                             @csrf
-                            <input name='title' type='text' class='form-control' placeholder='what type of food would you like to donate?' /> 
+                            <input name='title' type='text' class='form-control' placeholder='What type of food would you like to donate?' />
                             <br>
-                            <input name='amount' type= 'number' class='form-control' placeholder='amount of food' />
+                            <input name='amount' type= 'number' class='form-control' placeholder='Amount of food' min='0' />
                             <br>
-                            <select name="type" class="form-control">
-                                <option value="vegetable">Vegetable</option>
-                                <option value="protein">Protein</option>
-                                <option value="other">Other</option>
+                            <select name="type" class="form-control" >
+                                <option value="Produce">Produce</option>
+                                <option value="Proteins">Proteins</option>]
+                                <option value="Breads">Breads/Pastries</option>
+                                <option value="Nonperishables">Nonperishables</option>
+                                <option value="Other">Other</option>
                             </select>
                             <br>
-                            <input type='submit' value='donate food'>
+                            <input name = 'experation' type='date' call="'form-control" placeholder='experation date' />
+                            <br>
+                            <input type='submit' value='Donate food'>
                         </div>
                     </form>
 

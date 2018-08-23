@@ -1,27 +1,37 @@
 <script>
     export default {
-        props: ['food_id'],
+        props: ['food'],
 
         data() {
             return {
-                amount: '0'
+                d: {}
             }
         },
+
         methods: 
         {
-            requestFood()
+            remove()
             {
-                axios.post(this.endpoint, {
-                    'food_id': this.food_id,
-                    'amount': this.amount
+                axios.delete('/food', {
+                    data: { 'food_id': this.food.id }
+                }).then(() => {
+                    alert('Food Deleted')
                 })
-            }
+            },
         },
         computed:
         {
             endpoint()
             {
                 return '/transfer'
+            },
+            donator()
+            {
+                axios.get(`/user/${this.food.donator_id}`)
+                    .then( ({data}) => {
+                        this.d = data
+                    })
+                return this.d
             }
         }
     }
